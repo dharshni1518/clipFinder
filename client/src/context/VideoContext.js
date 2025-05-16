@@ -24,7 +24,7 @@ export const VideoProvider = ({ children }) => {
     setLoading(true)
     setError(null)
     try {
-      const response = await axios.get(`/api/videos/trending?category=${category}`)
+      const response = await axios.get(`https://clipfinder.onrender.com/api/videos/trending?category=${category}`)
       setTrendingVideos(response.data)
       setSelectedCategory(category)
     } catch (err) {
@@ -42,7 +42,7 @@ export const VideoProvider = ({ children }) => {
     setLoading(true)
     setError(null)
     try {
-      const response = await axios.get(`/api/videos/search?q=${query}`)
+      const response = await axios.get(`https://clipfinder.onrender.com/api/videos/search?q=${query}`)
       setSearchResults(response.data)
     } catch (err) {
       setError("Failed to search videos. Please try again later.")
@@ -57,7 +57,7 @@ export const VideoProvider = ({ children }) => {
     setLoading(true)
     setError(null)
     try {
-      const response = await axios.get("http://localhost:5000/api/videos/saved")
+      const response = await axios.get("https://clipfinder.onrender.com/api/videos/saved")
       setSavedVideos(response.data)
     } catch (err) {
       setError("Failed to fetch saved videos. Please try again later.")
@@ -75,7 +75,7 @@ export const VideoProvider = ({ children }) => {
     }
 
     try {
-      await axios.post("/api/videos/save", video)
+      await axios.post("https://clipfinder.onrender.com/api/videos/save", video)
       // Update saved videos list
       fetchSavedVideos()
       return true
@@ -91,7 +91,7 @@ export const VideoProvider = ({ children }) => {
     if (!isAuthenticated) return
 
     try {
-      await axios.delete(`/api/videos/saved/${videoId}`)
+      await axios.delete(`https://clipfinder.onrender.com/api/videos/saved/${videoId}`)
       // Update saved videos list
       setSavedVideos(savedVideos.filter((video) => video.videoId !== videoId))
       return true

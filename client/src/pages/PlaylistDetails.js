@@ -17,7 +17,7 @@ const PlaylistDetails = () => {
       try {
         setLoading(true)
         setError(null)
-        const res = await axios.get(`/api/playlists/${id}`)
+        const res = await axios.get(`https://clipfinder.onrender.com/api/playlists/${id}`)
         setPlaylist(res.data)
       } catch (err) {
         setError("Failed to fetch playlist. Please try again.")

@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem("token")
         if (token) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-          const res = await axios.get("/api/auth/user")
+          const res = await axios.get("https://clipfinder.onrender.com/api/auth/user")
           setUser(res.data)
         }
       } catch (err) {
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       setError(null)
-      const res = await axios.post("/api/auth/register", userData)
+      const res = await axios.post("https://clipfinder.onrender.com/api/auth/register", userData)
       localStorage.setItem("token", res.data.token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`
       setUser(res.data.user)
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (userData) => {
     try {
       setError(null)
-      const res = await axios.post("/api/auth/login", userData)
+      const res = await axios.post("https://clipfinder.onrender.com/api/auth/login", userData)
       localStorage.setItem("token", res.data.token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`
       setUser(res.data.user)

@@ -23,14 +23,14 @@ const VideoDetails = () => {
       setLoading(true)
       setError(null)
       try {
-        const response = await axios.get(`/api/videos/${videoId}`)
+        const response = await axios.get(`https://clipfinder.onrender.com/api/videos/${videoId}`)
         setVideoDetails(response.data)
 
         // Use trending videos as related if available, otherwise fetch related
         if (trendingVideos.length > 0) {
           setRelatedVideos(trendingVideos.filter((v) => v.videoId !== videoId).slice(0, 5))
         } else {
-          const relatedResponse = await axios.get(`/api/videos/related/${videoId}`)
+          const relatedResponse = await axios.get(`https://clipfinder.onrender.com/api/videos/related/${videoId}`)
           setRelatedVideos(relatedResponse.data)
         }
       } catch (err) {

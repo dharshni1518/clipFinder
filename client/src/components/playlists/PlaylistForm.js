@@ -29,7 +29,7 @@ const PlaylistForm = ({ onPlaylistCreated }) => {
 
     try {
       setLoading(true)
-      const res = await axios.post("/api/playlists", formData)
+      const res = await axios.post("https://clipfinder.onrender.com/api/playlists", formData)
 
       if (onPlaylistCreated) {
         onPlaylistCreated(res.data)
