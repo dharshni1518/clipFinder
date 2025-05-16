@@ -1,0 +1,16 @@
+.search-results {
+  padding: 20px 0;
+}
+
+.results-count {
+  margin-bottom: 20px;
+  color: var(--dark-gray);
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  color: var(--dark-gray);
+}
